@@ -33,7 +33,7 @@
 		if ($nav.length > 0) {
 
 			// Shrink effect.
-				$body
+				$main
 					.scrollex({
 						mode: 'top',
 						enter: function() {
