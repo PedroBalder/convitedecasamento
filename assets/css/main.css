@@ -107,11 +107,11 @@ input, select, textarea {
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
-			-moz-animation: none !important;
-			-webkit-animation: none !important;
-			-ms-animation: none !important;
+			-moz-animation:none !important;
+			-webkit-animation:none !important;
+			-ms-animation:none !important;
 			animation: none !important;
-			-moz-transition: none !important;
+			-moz-transition:none !important;
 			-webkit-transition: none !important;
 			-ms-transition: none !important;
 			transition: none !important;
@@ -3217,9 +3217,10 @@ input, select, textarea {
 		transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
 		background-color: #ffffff;
 		color: #636363;
-		position: absolute;
-		width: 64em;
-		max-width: calc(100% - 4em);
+		position:;
+		
+		width: 100%;
+		max-width: calc(100%);
 		padding: 1em;
 		background-color: #f7f7f7;
 		border-top-left-radius: 0.25em;
@@ -3302,7 +3303,7 @@ input, select, textarea {
 					}
 
 		#nav.alt {
-			position: fixed;
+			position:fixed;
 			top: 0;
 			padding: 0.5em 1em;
 			background-color: rgba(247, 247, 247, 0.95);
