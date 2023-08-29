@@ -3218,7 +3218,7 @@ input, select, textarea {
 		background-color: #ffffff;
 		color: #636363;
 		position: absolute;
-		width: 100%;
+		width: 64em;
 		max-width: calc(100% - 4em);
 		padding: 1em;
 		background-color: #f7f7f7;
@@ -3302,9 +3302,9 @@ input, select, textarea {
 					}
 
 		#nav.alt {
-			position:fixed;
+			position: fixed;
 			top: 0;
-			padding:0.5em 1em ;
+			padding: 0.5em 1em;
 			background-color: rgba(247, 247, 247, 0.95);
 			border-top-left-radius: 0;
 			border-top-right-radius: 0;
@@ -3319,7 +3319,7 @@ input, select, textarea {
 					font-size: 0.9em;
 				}
 
-		@media screen and (max-width: 0px) {
+		@media screen and (max-width: 736px) {
 
 			#nav {
 				display: none;
