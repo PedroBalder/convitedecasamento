@@ -1,25 +1,74 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="columns">
-        <div class="column">
-          <p><button type="button" onclick="getStream('video')">Grab video</button></p>
-          
-          <video controls autoplay style="height:180px; width: 240px;"></video>
-        </div>
-        <div class="column">
-          <p><button type="button" onclick="getStream('audio')">Grab audio</button></p>
-          
-          <audio controls></audio>
-        </div>
-      </div>
+<html>
+  <head>
+		<title>Balder's convidados</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+					<!-- Nav -->
+					<nav id="nav">
+						<ul>
+                            <li><a href="index.html".html">Início</a></li>
+							<li><a href="sobre.html">Sobre</a></li>
+							<li><a href="localizacao.html">Localização</a></li>
+							<li><a href="lista.html">Lista de Presentes</a></li>
+							<li><a href="convidados.html">Convidados</a></li>
+							
+						</ul>
+					</nav>
 
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-    </body>
-    </html>
+    <button id="startButton">Iniciar Gravação</button>
+    <button id="stopButton" disabled>Parar Gravação</button>
+    <video id="videoElement" autoplay></video>
+    <audio id="audioElement" controls></audio>
+
+    <script>
+        const startButton = document.getElementById('startButton');
+        const stopButton = document.getElementById('stopButton');
+        const videoElement = document.getElementById('videoElement');
+        const audioElement = document.getElementById('audioElement');
+        let mediaRecorder;
+        let chunks = [];
+
+        startButton.addEventListener('click', async () => {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+
+            mediaRecorder = new MediaRecorder(stream);
+
+            mediaRecorder.ondataavailable = (event) => {
+                if (event.data.size > 0) {
+                    chunks.push(event.data);
+                }
+            };
+
+            mediaRecorder.onstop = () => {
+                const blob = new Blob(chunks, { type: 'video/webm' });
+                const videoURL = URL.createObjectURL(blob);
+                videoElement.src = videoURL;
+
+                const audioBlob = new Blob(chunks, { type: 'audio/wav' });
+                const audioURL = URL.createObjectURL(audioBlob);
+                audioElement.src = audioURL;
+            };
+
+            mediaRecorder.start();
+            startButton.disabled = true;
+            stopButton.disabled = false;
+        });
+
+        stopButton.addEventListener('click', () => {
+            mediaRecorder.stop();
+            startButton.disabled = false;
+            stopButton.disabled = true;
+        });
+    </script>
+</body>
+</html>
+
     
