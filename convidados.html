@@ -32,9 +32,30 @@
     </header>
     <footer class="major">
         <ul class="actions special">
-            <li><a href="generic.html" class="button primary">Confirmação</a></li>
-            <li><a href="generic.html" class="button">Não Confirmado</a></li>
+            <li><button id="agradecerButton" class="button primary">Confirmar</button></li>
+			<li><button id="lamentarButton" class="button"> Não Confirmar</button></li>
         </ul>
+		<div id="mensagem"></div>
+		<script>
+			// Função para exibir a mensagem de agradecimento
+			function exibirAgradecimento() {
+				const mensagemDiv = document.getElementById('mensagem');
+				mensagemDiv.textContent = "Obrigado por confirmar sua presença.";
+			}
+	
+			// Função para exibir a mensagem de lamento
+			function exibirLamento() {
+				const mensagemDiv = document.getElementById('mensagem');
+				mensagemDiv.textContent = "Que pena!";
+			}
+	
+			// Adicione ouvintes de eventos para os botões
+			const agradecerButton = document.getElementById('agradecerButton');
+			agradecerButton.addEventListener('click', exibirAgradecimento);
+	
+			const lamentarButton = document.getElementById('lamentarButton');
+			lamentarButton.addEventListener('click', exibirLamento);
+		</script>
     </footer>
 </section>
 
