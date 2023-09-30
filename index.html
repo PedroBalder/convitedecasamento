@@ -21,8 +21,40 @@
 						</ul>
 					</nav>
 
+					
+    <p>Hoje, a previsão do tempo em Recife é:</p>
+    <div id="temp"></div>
+
+    <script>
+        // Sua chave de API do OpenWeatherMap
+        const apiKey = 'be822744309deaedf1291a905cbfb05e';
+
+        // Código da cidade para Recife
+        const cityId = '3390760';
+
+        // URL da API de previsão do tempo
+        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&appid=${apiKey}&units=metric`;
+
+        // Função para buscar dados da API e exibir a temperatura
+        async function fetchWeather() {
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                const temperature = data.main.temp;
+
+                document.getElementById('temp').textContent = `Temperatura: ${temperature}°C`;
+            } catch (error) {
+                console.error('Erro ao buscar dados da API', error);
+            }
+        }
+
+        // Chama a função para buscar dados da API quando a página carrega
+        window.addEventListener('load', fetchWeather);
+    </script>
+
 		<!-- Wrapper -->
 			<div id="wrapper">
+
 				<!-- Header -->
 					<header id="header" class="alt">
 						<span class="logo"><img src="images/romeuejulieta4.jpg" alt="" /></span>
